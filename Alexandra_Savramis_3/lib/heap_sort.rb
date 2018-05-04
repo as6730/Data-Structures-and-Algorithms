@@ -17,3 +17,12 @@ class Array
     self.reverse!
   end
 end
+
+
+# example_input = [[3, 5, 7], [0, 6], [0, 6, 28]]
+
+def 500_files(input)
+  # naive solution is to flatten and sort
+
+  
+end
