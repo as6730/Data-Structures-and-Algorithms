@@ -129,6 +129,65 @@ let integers = function(num) {
   return true;
 }
 
+// Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// An input string is valid if:
+
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Note that an empty string is also considered valid.
+
+let inputStringValid = function(string) {
+  if (string.length % 2 != 0) {
+    return false;
+  }
+
+  let openingBrackets = ['(', '{', '['];
+  let openingBracketsArr = [];
+  let closingBracketsArr = [];
+
+  for (let i = 0; i < string.length; i++) {
+    if (openingBrackets.includes(string[i])) {
+      openingBracketsArr.push(string[i]);
+    } else {
+      closingBracketsArr.push(string[i]);
+    }
+  }
+  // openingBrackets = ['{', '{', '(', '['];
+  // closingBrackets = [']', ')', '}', '}'];
+  let completeBrackets = ['()', '{}', '[]'];
+  for (let i = 0; i < openingBracketsArr.length; i++) {
+    if (!completeBrackets.includes(openingBracketsArr[i] + closingBracketsArr[closingBracketsArr.length - 1 - i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let isValid = function(s) {
+    let stack = []
+    for(let i = 0; i < s.length; i++) {
+        let c = s[i];
+        if(c === '(' || c === '{' || c === '[') {
+            stack.push(c)
+        } else {
+          let c2 = stack.pop()
+          if (c === '}' && c2 !== '{') {
+              return false;
+          } else if (c === ')' && c2 !== '(') {
+              return false;
+          } else if (c === ']' && c2 !== '[') {
+            return false;
+          }
+        }
+    }
+
+    return stack.length === 0
+};
+
+console.log(inputStringValid("{{([])}"));
+
 // •	Given a dictionary = {'e': 5, 'a': 7, 'c': 3, 'd': 10, 'b': 8},
 // print out the keys of the top 3 values
 
