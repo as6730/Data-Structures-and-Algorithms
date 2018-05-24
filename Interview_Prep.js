@@ -25,12 +25,18 @@ let two_sum = function(nums, target) {
 // Space Complexity: O(1)
 
 let two_sum = function(nums, target) {
+  let tmp_target = target;
+  let tmp_nums = nums;
   let result = [];
 
   for (let i = 0; i < nums.length; i++) {
-    const val = target - nums[i];
-    const is_matched = nums.findIndex(el => el === val);
-    if (nums.includes(val) && is_matched) {
+    const val = tmp_target - tmp_nums[i];
+    // this doesn't work because if the array given is [3, 3] and the target 6
+    // then findIndex will just return the first index found where the condition
+    // is true, and therefore it will never return true because of the duplicate
+    // numbers 
+    const is_matched = tmp_nums.findIndex(el => el === val);
+    if (tmp_nums.includes(val) && is_matched) {
       result = [i, is_matched];
       break;
     }
