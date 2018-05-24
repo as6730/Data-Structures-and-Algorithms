@@ -8,7 +8,7 @@
 // Time Complexity: 0(n^2)
 // Space Complexity: O(1)
 
-let two_sum = function(nums, target) {
+let twoSum = function(nums, target) {
     for (let i = 0; i < nums.length - 1; i++) {
         for (let j = i + 1; j < nums.length; j++) {
             if (nums[i] + nums[j] === target) {
@@ -24,19 +24,19 @@ let two_sum = function(nums, target) {
 // Time Complexity: 0(1) - traverse the list containing nn elements only once. Each look up in the table costs only O(1) time
 // Space Complexity: O(1)
 
-let two_sum = function(nums, target) {
-  let tmp_target = target;
-  let tmp_nums = nums;
+let twoSum = function(nums, target) {
+  let tmpTarget = target;
+  let tmpNums = nums;
   let result = [];
 
   for (let i = 0; i < nums.length; i++) {
-    const val = tmp_target - tmp_nums[i];
+    const val = tmpTarget - tmpNums[i];
     // this doesn't work because if the array given is [3, 3] and the target 6
     // then findIndex will just return the first index found where the condition
     // is true, and therefore it will never return true because of the duplicate
     // numbers
-    const is_matched = tmp_nums.findIndex(el => el === val);
-    if (tmp_nums.includes(val) && is_matched) {
+    const is_matched = tmpNums.findIndex(el => el === val);
+    if (tmpNums.includes(val) && is_matched) {
       result = [i, is_matched];
       break;
     }
@@ -45,32 +45,61 @@ let two_sum = function(nums, target) {
   return result;
 }
 
-console.log(two_sum([2, 7, 11, 15], 9));
+console.log(twoSum([2, 7, 11, 15], 9));
 
 // Given the following, how would I group the item, so that I can get the result below
 
-var foodItems = [
-	{ type: "chinese", name: "chow mein" },
-	{ type: "american", name: "burgers" },
-	{ type: "chinese", name: "wontons" },
-  { type: "indian", name: "chicken" },
-];
-
-// iterate through the array
-
-let group_by_type = function(array) {
-  let result = [];
-
-  for (let i = 0; i < foodItems.length; i++) {
-
-  }
-}
-
+// var foodItems = [
+// 	{ type: "chinese", name: "chow mein" },
+// 	{ type: "american", name: "burgers" },
+// 	{ type: "chinese", name: "wontons" },
+//   { type: "indian", name: "chicken" },
+// ];
+//
 // result = [
 //   { type: "chinese", name: ["chow mein", "wontons"], count: 2 },
 //   { type: "america", name: ["burgers"], count: 1 },
 //   { type: "indian", name: "chicken", count: 1 }
 // ];
+
+let groupByType = function(array) {
+  let tmpHash = {};
+
+  for (let i = 0; i < array.length; i++) {
+    let currType = array[i]["type"];
+    if (tmpHash[currType] === undefined) {
+      tmpHash[currType] = [array[i]["name"]];
+    } else {
+      tmpHash[currType].push(array[i]["name"]);
+    }
+  }
+
+  let result = [];
+  Object.keys(tmpHash).forEach(key => {
+    let subHash = {};
+    subHash["type"] = key;
+    let namesArr = tmpHash[key];
+
+    if (namesArr.length === 1) {
+      subHash["name"] = namesArr[0];
+      subHash["count"] = 1;
+    } else {
+      subHash["name"] = namesArr;
+      subHash["count"] = namesArr.length;
+    }
+
+    result.push(subHash);
+  })
+
+  return result;
+}
+
+console.log(groupByType([
+	{ type: "chinese", name: "chow mein" },
+	{ type: "american", name: "burgers" },
+	{ type: "chinese", name: "wontons" },
+  { type: "indian", name: "chicken" },
+]))
 
 // Given a range of numbers, see if it is divisible by its individual integers
 // ex: 128 - can be moduled by 1, 2, 8
@@ -98,4 +127,14 @@ let integers = function(num) {
   }
 
   return true;
+}
+
+// •	Given a dictionary = {'e': 5, 'a': 7, 'c': 3, 'd': 10, 'b': 8},
+// print out the keys of the top 3 values
+
+let topThreeValues = function(dictionary) {
+  let sortedArr = Object.keys(dictionary).sort((num1, num2) => num1 - num2);
+  let topValues = sortedArr.slice(sortedArr.length - 4, sortedArr.length - 1);
+
+  for (let i = 0; i < )
 }
