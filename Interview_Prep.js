@@ -308,6 +308,9 @@ var numJewelsInStones = function(J, S) {
 // Note: You may not engage in multiple transactions at the same time
 // (i.e., you must sell the stock before you buy again).
 
+// Time complexity : O(n). Single pass.
+// Space complexity : O(1). Constant space required.
+
 var maxProfit = function(prices) {
     let profit = 0;
     let i = 0;
