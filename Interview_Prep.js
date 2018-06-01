@@ -355,6 +355,10 @@ var maxProfit = function(prices) {
 // Input: [1,2,3,4,5,6,7] and k = 3
 // Output: [5,6,7,1,2,3,4]
 
+// Try to come up as many solutions as you can, there are at least 3 different
+// ways to solve this problem.
+// Could you do it in-place with O(1) extra space?
+
 
 var rotate = function(nums, k) {
     if (k != 0) {
@@ -366,4 +370,34 @@ var rotate = function(nums, k) {
             rotations--;
         }
     }
+};
+
+// Contains Duplicate
+// Given an array of integers, find if the array contains any duplicates.
+// Your function should return true if any value appears at least twice
+// in the array, and it should return false if every element is distinct.
+
+// Input: [1,2,3,4]
+// Output: false
+// Input: [1,1,1,3,3,4,3,2,4,2]
+// Output: true
+
+var containsDuplicate = function(nums) {
+    let countIntegers = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        if (countIntegers[nums[i]] === undefined) {
+            countIntegers[nums[i]] = 1;
+        } else {
+           countIntegers[nums[i]] += 1;
+        }
+    }
+
+    for (let key in countIntegers) {
+        if (countIntegers[key] >= 2) {
+            return true;
+        }
+    }
+
+    return false;
 };
