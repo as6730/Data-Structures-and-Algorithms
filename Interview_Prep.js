@@ -62,6 +62,46 @@ console.log(twoSum([2, 7, 11, 15], 9));
 //   { type: "indian", name: "chicken", count: 1 }
 // ];
 
+// create a temerary hash
+// place array names in there
+// then get keys of the hash
+// create a result array
+// object.keys on hash
+// create a subarray in loop
+// if namesarr is
+
+let groupByType = function(array) {
+  let tmpHash = {};
+  // tmpHash will be { chinese: ["chow mein"] }
+
+  for (let i = 0; i < array.length; i++) {
+    let currType = array[i]["type"];
+    if (tmpHash[currType] === undefined) {
+      tmpHash[currType] = [array[i]["name"]]; // set the name to an array
+    } else {
+      tmpHash[currType].push(array[i]["name"]) // if the name is there, then push it in
+    }
+  }
+
+  let result = [];
+  Object.keys(tmpHash).forEach(key => {
+    let subHash = {};
+    subHash["type"] = key;
+    let namesArr =tmpHash[key];
+
+    if (namesArr.length === 1) {
+      subHash["name"] = namesArr[0];
+      subHash["count"] = 1;
+    } else {
+      subHash["name"] = namesArr;
+      subHash["count"] = namesArr.length;
+    }
+
+    result.push(subHash);
+  })
+
+  return result;
+}
 let groupByType = function(array) {
   let tmpHash = {};
 
@@ -165,10 +205,10 @@ let inputStringValid = function(string) {
   return true;
 }
 
-let isValid = function(s) {
+let isValid = function(string) {
     let stack = []
-    for(let i = 0; i < s.length; i++) {
-        let c = s[i];
+    for(let i = 0; i < string.length; i++) {
+        let c = string[i];
         if(c === '(' || c === '{' || c === '[') {
             stack.push(c)
         } else {
@@ -227,5 +267,43 @@ let topThreeValues = function(dictionary) {
   let sortedArr = Object.keys(dictionary).sort((num1, num2) => num1 - num2);
   let topValues = sortedArr.slice(sortedArr.length - 4, sortedArr.length - 1);
 
-  for (let i = 0; i < )
+  for (let i = 0; i < topValues.length; i++) {
+
+  }
 }
+
+// You're given strings J representing the types of stones that are jewels,
+// and S representing the stones you have.  Each character in S is a type
+// of stone you have.  You want to know how many of the stones you have
+// are also jewels.
+//
+// The letters in J are guaranteed distinct, and all characters in J and S
+// are letters. Letters are case sensitive, so "a" is considered a different
+// type of stone from "A".
+
+// Input: J = "aA", S = "aAAbbbb"
+// Output: 3
+
+var numJewelsInStones = function(J, S) {
+    let jewelStones = 0;
+
+    for (let i = 0; i < J.length; i++) {
+       for (let j = 0; j < S.length; j++) {
+            if (J[i] === S[j]) {
+                jewelStones++;
+            }
+        }
+    }
+
+    return jewelStones;
+};
+
+// Say you have an array for which the ith element is the price of a given
+// stock on day i.
+//
+// Design an algorithm to find the maximum profit. You may complete as many
+// transactions as you like (i.e., buy one and sell one share of the stock
+//   multiple times).
+//
+// Note: You may not engage in multiple transactions at the same time
+// (i.e., you must sell the stock before you buy again).
