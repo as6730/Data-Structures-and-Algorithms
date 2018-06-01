@@ -307,3 +307,18 @@ var numJewelsInStones = function(J, S) {
 //
 // Note: You may not engage in multiple transactions at the same time
 // (i.e., you must sell the stock before you buy again).
+
+var maxProfit = function(prices) {
+    let profit = 0;
+    let peak = prices[i];
+    let valley = prices[i];
+    let i = 0;
+
+    while (i < prices.length - 1) {
+        while (i < prices.length - 1 && prices[i] >= prices[i + 1])
+    }
+
+    return profit;
+};
+
+console.log(maxProfit([7,1,5,3,6,4]))
