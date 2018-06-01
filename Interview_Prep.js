@@ -316,13 +316,13 @@ var maxProfit = function(prices) {
 
     while (i < prices.length - 1) {
         while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
-            i++;
+            i++; // you add to i before setting the valley because of prices[i] (peak) >= prices[i + 1] (valley)
             valley = prices[i];
         }
         while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
             i++;
             peak = prices[i];
-            profit += (peak - valley);
+            profit += (peak - valley); // when you find the peak, set the profit
         }
     }
 
