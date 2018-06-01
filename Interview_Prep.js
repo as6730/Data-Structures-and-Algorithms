@@ -310,12 +310,20 @@ var numJewelsInStones = function(J, S) {
 
 var maxProfit = function(prices) {
     let profit = 0;
+    let i = 0;
     let peak = prices[i];
     let valley = prices[i];
-    let i = 0;
 
     while (i < prices.length - 1) {
-        while (i < prices.length - 1 && prices[i] >= prices[i + 1])
+        while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
+            i++;
+            valley = prices[i];
+        }
+        while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
+            i++;
+            peak = prices[i];
+            profit += (peak - valley);
+        }
     }
 
     return profit;
