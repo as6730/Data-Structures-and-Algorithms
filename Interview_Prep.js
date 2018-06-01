@@ -348,3 +348,22 @@ var maxProfit = function(prices) {
 
   return profit;
 };
+
+
+// Rotate Array
+// Given an array, rotate the array to the right by k steps, where k is non-negative.
+// Input: [1,2,3,4,5,6,7] and k = 3
+// Output: [5,6,7,1,2,3,4]
+
+
+var rotate = function(nums, k) {
+    if (k != 0) {
+       let rotations = (k + 1) % nums.length;
+
+        while (rotations > 0) {
+            let num = nums.shift();
+            nums.push(num);
+            rotations--;
+        }
+    }
+};
