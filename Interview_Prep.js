@@ -413,7 +413,7 @@ var singleNumber = function(nums) {
 
     for (let i = 0; i < nums.length; i++) {
         let num = nums[i];
-        if (!(count[num] in count)) {
+        if (!(num in count)) {
             count[num] = 1;
         } else {
             count[num] += 1;
@@ -422,7 +422,7 @@ var singleNumber = function(nums) {
 
     for (let key in count) {
         if (count[key] === 1) {
-            return key;
+            return parseInt(key);
         }
     }
 };
