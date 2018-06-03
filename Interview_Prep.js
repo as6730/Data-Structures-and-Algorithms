@@ -408,6 +408,25 @@ var containsDuplicate = function(nums) {
 //
 // Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
+var singleNumber = function(nums) {
+    let count = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        let num = nums[i];
+        if (!(count[num] in count)) {
+            count[num] = 1;
+        } else {
+            count[num] += 1;
+        }
+    }
+
+    for (let key in count) {
+        if (count[key] === 1) {
+            return key;
+        }
+    }
+};
+
 // Given two arrays, write a function to compute their intersection.
 //
 // Example:
