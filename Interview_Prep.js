@@ -407,3 +407,8 @@ var containsDuplicate = function(nums) {
 // Note:
 //
 // Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+// Given two arrays, write a function to compute their intersection.
+//
+// Example:
+// Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].
