@@ -87,3 +87,30 @@ class Array
     self.dup.bubble_sort!(&prc)
   end
 end
+
+# Binary search
+
+class Array
+
+  def my_bsearch(target, &prc)
+    prc ||= Proc.new {|a, b| a <=> b}
+    my_bsearch_with_arr(self, target, 0, prc)
+  end
+
+  def my_bsearch_with_arr(arr, target, shift, prc)
+    return nil if arr.empty?
+
+    mid_idx = arr.length / 2
+    curr_value = arr[mid_idx]
+
+    case prc.call(target, curr_value)
+      when 0
+        return mid_idx + shift
+      when 1
+        return my_bsearch_with_arr(arr[(mid_idx + 1)..-1], target, shift + mid_idx + 1, prc)
+      when -1
+        return my_bsearch_with_arr(arr[0...mid_idx], target, shift, prc)
+    end
+  end
+
+end
