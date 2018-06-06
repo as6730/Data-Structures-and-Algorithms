@@ -63,3 +63,27 @@ class Array
     merged
   end
 end
+
+# Bubble sort
+
+class Array
+  def bubble_sort!(&prc)
+    prc ||= Proc.new {|a, b| a <=> b}
+
+    self.length.times do
+      self.each_index do |j|
+        break if j == self.length - 1
+        k = j + 1
+        if prc.call(self[j], self[k]) == 1
+          self[j], self[k] = self[k], self[j]
+        end
+      end
+    end
+
+    self
+  end
+
+  def bubble_sort(&prc)
+    self.dup.bubble_sort!(&prc)
+  end
+end
