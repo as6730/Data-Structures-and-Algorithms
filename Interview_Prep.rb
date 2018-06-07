@@ -1,3 +1,44 @@
+# Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
+
+# Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+# Example 1:
+
+# Given nums = [1,1,2],
+
+# Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+
+# It doesn't matter what you leave beyond the returned length.
+# Example 2:
+
+# Given nums = [0,0,1,1,1,2,2,3,3,4],
+
+# Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+
+# It doesn't matter what values are set beyond the returned length.
+
+def remove_duplicates(nums)
+    return 0 if nums.length === 0
+
+    curr_idx = 0
+    j = 0
+    val = nums[j]
+
+    while curr_idx < nums.length
+        curr_val = nums[curr_idx]
+        if curr_val === val
+            curr_idx += 1
+            next
+        else
+            val = curr_val
+            j += 1
+            nums[j] = curr_val
+        end
+    end
+
+    j + 1
+end
+
 # Array merge that doesn't mutate the original array
 class Array
   def mergesort(list)
@@ -40,7 +81,6 @@ class Array
     merged = []
     n = left.length + right.length
     i, j = 0, 0
-
     (0...n).each do
       if i == left.length
         merged << right[j]
