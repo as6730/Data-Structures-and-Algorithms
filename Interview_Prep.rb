@@ -39,6 +39,12 @@ def remove_duplicates(nums)
     j + 1
 end
 
+# Time complextiy : O(n). Assume that n is the length of array.
+# Each of i and j traverses at most n steps.
+# Space complexity : O(1).
+
+
+
 # Array merge that doesn't mutate the original array
 class Array
   def mergesort(list)
